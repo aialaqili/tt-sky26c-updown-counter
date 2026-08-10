@@ -47,6 +47,7 @@ async def test_project(dut):
     await ClockCycles(dut.clk, 1)
     assert int(dut.uo_out.value) == (start2 - 3) & 0xF
     dut._log.info("Reset again")
+    dut.ui_in.value = 0
     dut.rst_n.value = 0
     await ClockCycles(dut.clk, 2)
     dut.rst_n.value = 1
